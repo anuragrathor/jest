@@ -1,0 +1,15 @@
+
+
+<app-listing-table [HeadArray]="tableheader" [DataArray]="userList" 
+(onEdit)="editUser($event)" (onDelete)="deleteUser($event)">
+
+</app-listing-table>
+
+
+<app-custom-pagination
+ [currentPage]="currentPage" 
+ [limit] ="limitPerPage" 
+ [total] ="totalRecords" 
+ (changePage) = "changePage($event)"
+>
+</app-custom-pagination>

@@ -1,0 +1,17 @@
+<ul class="pagination">
+    
+    
+    <a *ngIf="currentPage != 1" (click)="pageChange(1)" class="previous round">&#8249;&#8249;</a>
+    <a *ngIf="currentPage != 1" (click)="pageChange(currentPage-1)" class="previous">&laquo; Previous</a>
+    
+    <li 
+    *ngFor="let page of pages" 
+    [ngClass]="{'page-item': true, active: currentPage === page}"  
+    (click) ="pageChange(page)"
+    >
+    <span class="page-link">{{page}}</span>
+    </li>
+
+    <a *ngIf="currentPage != 1" (click)="pageChange(currentPage+1)" class="next">Next &raquo;</a>
+    <a *ngIf="currentPage != lastPage" (click)="pageChange(lastPage)" class="next round">&#8250;&#8250;</a>
+</ul>

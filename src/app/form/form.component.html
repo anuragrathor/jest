@@ -1,0 +1,64 @@
+<form [formGroup]="registrationForm" (ngSubmit)="registration()">
+
+  <div class="col-12">
+    First Name :<input type="text" name="fname" formControlName="fname">
+
+    <app-form-status [control]="getControl('fname')"></app-form-status>
+  </div>
+    
+
+  <div class="col-12">
+    Last Name : <input type="text" name="lname" formControlName="lname">
+
+    <app-form-status [control]="getControl('lname')"></app-form-status>
+  </div>
+  
+
+    Address : 
+    
+    <div formGroupName="address">
+      <div class="col-12">
+      <app-form-status [control]="getControl('address')"></app-form-status>
+    </div>
+    <div class="col-12">
+        Country : <input type="text" name="country" formControlName="country">
+        <app-form-status [control]="getControl('address.country')"></app-form-status>
+      </div>
+      <div class="col-12">
+        State : <input type="text" name="state" formControlName="state">
+        <app-form-status [control]="getControl('address.state')"></app-form-status>
+        </div>
+        <div class="col-12">
+        City : <input type="text" name="city" formControlName="city">
+        <app-form-status [control]="getControl('address.city')"></app-form-status>
+        </div>
+    </div>
+
+    
+    
+    <div formArrayName="hobbies">
+        <h2>Hobbies</h2>
+        <button type="button" (click)="addHobbies()">+ Add Hobies</button>
+      
+        <div *ngFor="let hobbie of hobbies.controls; let i=index">
+          <!-- The repeated alias template -->
+          <label for="hobbie-{{ i }}">Hobbies:</label>
+          <input id="hobbie-{{ i }}" type="text" [formControlName]="i">
+
+          <app-form-status [control]="$any(hobbie)"></app-form-status>
+        </div>
+
+        
+      </div>
+
+      
+    <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+</form>
+<button type="button" (click)="updateProfile()">Patch Value</button>
+<button (click)="resetForm()"> Reset</button>
+
+
+<p>Form Value: {{ registrationForm.value | json }}</p>
+<p>Form Status: {{ registrationForm.status }}</p>
+
+<app-form-status [control]="$any(registrationForm)"></app-form-status>
