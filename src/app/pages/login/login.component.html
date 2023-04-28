@@ -20,7 +20,10 @@
 
         <label for="email">Email</label>
         <input type="email" formControlName="email" placeholder="Enter email" id="email">       
-                  
+               
+              <div *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+                <small *ngIf="f['email'].errors && f['email'].errors['required']">Name is required.</small>
+              </div>
         <!-- <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
         <small *ngIf="f.email.errors && f.email.errors.required">Email is required.</small>
         </div> -->
