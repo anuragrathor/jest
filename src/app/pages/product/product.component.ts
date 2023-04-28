@@ -1,5 +1,6 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -20,13 +21,19 @@ export class ProductComponent {
     {'Head' : 'Actions', 'FieldName': ''}
   ];
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient, private api:AuthService){
 
   }
 
   ngOnInit():void {
     this.loadUsers();
   }
+
+
+  apiTest(){
+    this.api.post('http://localhost/backend/login');
+  }
+
 
   loadUsers(){
     this.http.get('https://jsonplaceholder.typicode.com/users').subscribe((result:any) => {

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Login</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h3>Login</h3>
+
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" placeholder="Enter email" id="email">       
+                  
+        <!-- <div *ngIf="f.email.touched && f.email.invalid" class="alert alert-danger">
+        <small *ngIf="f.email.errors && f.email.errors.required">Email is required.</small>
+        </div> -->
+
+
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" placeholder="Password" id="password">
+        
+        <!-- <div *ngIf="f.password.touched && f.password.invalid" class="alert alert-danger">
+            <small *ngIf="f.password.errors && f.password.errors.required">Password is required.</small>
+            <small *ngIf="f.password.errors && f.password.errors.minlength">
+                Password must be at least 6 characters
+            </small>
+            <small *ngIf="f.password.errors && f.password.errors.maxlength">
+                Password must not exceed 40 characters
+            </small>
+        </div> -->
+
+
+        <button  type="submit">Log In</button>
+        <div class="social">
+          <div class="go"><i class="fab fa-google"></i>  Google</div>
+          <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div>
+    </form>
+</body>
+</html>
