@@ -1,0 +1,72 @@
+<p>User Registration Form</p>
+<form [formGroup]="registrationForm" (ngSubmit)="registration()">
+
+    <div class="col-12">
+      Full Name :<input type="text" name="name" formControlName="name">
+  
+      <app-form-status [control]="getControl('name')"></app-form-status>
+    </div>
+      
+  
+    <div class="col-12">
+      email: <input type="email" name="email" formControlName="email">
+  
+      <app-form-status [control]="getControl('email')"></app-form-status>
+    </div>
+
+    <div class="col-12">
+        Password: <input type="password" name="password" formControlName="password">
+    
+        <app-form-status [control]="getControl('password')"></app-form-status>
+      </div>
+    
+  
+    <div class="col-12">
+        Gender : 
+        Male <input type="radio" name="gender" formControlName="gender" value="male">
+        Female <input type="radio" name="gender" formControlName="gender" value="female">
+    
+        <app-form-status [control]="getControl('gender')"></app-form-status>
+      </div>
+
+      <div class="col-12">
+        Mobile No : <input type="text" name="mobile" formControlName="mobile">
+    
+        <app-form-status [control]="getControl('mobile')"></app-form-status>
+      </div>
+
+      Address : 
+      
+      <div formGroupName="address">
+        <div class="col-12">
+        <app-form-status [control]="getControl('address')"></app-form-status>
+      </div>
+      <div class="col-12">
+          Country : 
+          <!-- <select formControlName="country" name="country" [(ngModel)]="countrySelected" (ngModelChange)="onCountrySelected($event)">
+            <option *ngFor="let country of listCountry" [value]="country.iso2">{{country.name}}</option>
+          </select> -->
+          <!-- <input type="text" name="country" formControlName="country"> -->
+          <app-form-status [control]="getControl('address.country')"></app-form-status>
+        </div>
+        <div class="col-12">
+          State : 
+          <select formControlName="state" name="state">
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="MP">MP</option>
+          </select>
+          <app-form-status [control]="getControl('address.state')"></app-form-status>
+          </div>
+          <div class="col-12">
+          City : 
+          <select formControlName="city" name="city">
+            <option value="Kota">Kota</option>
+            <option value="Jaipur">Jaipur</option>
+          </select>
+          <app-form-status [control]="getControl('address.city')"></app-form-status>
+          </div>
+      </div>
+  
+        
+      <button type="submit" [disabled]="registrationForm.invalid">Submit</button>
+  </form>

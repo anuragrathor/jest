@@ -32,18 +32,7 @@ export class LoginComponent {
 
   }
 
-  ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', [
-                        Validators.required,
-                        Validators.minLength(6),
-                        Validators.maxLength(20)
-                      ]
-                ],
-    }); 
 
- }
 
   //Provide Form Control to this f  
   get f(){
@@ -58,7 +47,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       let params = this.loginForm.value;
 
-      this.apiService.post('api/auth/login', params).subscribe((res: any) => {
+      this.apiService.post('auth/login', params).subscribe((res: any) => {
         if (res.type == 'Success') {
           this.submitted = false;      
           this.toaster.showSuccess(res.message);

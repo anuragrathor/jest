@@ -17,6 +17,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { ProperCasePipe } from './_utils/pipes/propercase.pipe';
 import { CPDefaultThemeDirective } from './_utils/directives/cp-default-theme.directive';
 import { CPCustomThemeDirective } from './_utils/directives/cp-custom-theme.directive';
+import { SignupComponent } from './pages/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CPCustomThemeDirective } from './_utils/directives/cp-custom-theme.dire
     LoginComponent,
     ProperCasePipe,      //Custom Directive
     CPDefaultThemeDirective,
-    CPCustomThemeDirective
+    CPCustomThemeDirective,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
