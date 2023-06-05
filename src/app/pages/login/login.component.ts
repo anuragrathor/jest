@@ -32,6 +32,19 @@ export class LoginComponent {
 
   }
 
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', [
+                        Validators.required,
+                        Validators.minLength(6),
+                        Validators.maxLength(20)
+                      ]
+                ],
+    }); 
+
+ }
+
   //Provide Form Control to this f  
   get f(){
     return this.loginForm.controls;
