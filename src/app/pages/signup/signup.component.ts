@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { City } from 'src/app/_model/city';
 import { Country } from 'src/app/_model/country';
 import { State } from 'src/app/_model/state';
+import { ApiServiceService } from 'src/app/appServices/api/api-service.service';
 import { CountrystatecityService } from 'src/app/appServices/countrystatecity/countrystatecity.service';
 
 
@@ -24,7 +25,7 @@ export class SignupComponent {
 
 
 
-  constructor(private fb: FormBuilder, private CountrystatecityService: CountrystatecityService) { }
+  constructor(private fb: FormBuilder, private CountrystatecityService: CountrystatecityService, private apiService: ApiServiceService) { }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -53,32 +54,6 @@ export class SignupComponent {
   }
 
 
-//Fetch Country List 
-  fetchCountry(){
-    this.CountrystatecityService.getCountry().subscribe(data => {
-      this.listCountry = data;
-
-    });
-  }
-
-//Fetch State List 
-  onCountrySelected(countryIso:string){
-    this.CountrystatecityService.getStateOfSelectedCountry(countryIso).subscribe(data => {
-      this.listState = data;
-    });
-  }
-
-
-  //Fetch City List 
-  // onStateSelected(countryIso = this.countrySelected ,stateIso = stateSelected){
-  onStateSelected(countryIso = this.selectcountry,stateIso = this.selectstate){
-    this.CountrystatecityService.getCityOfSelectedState(countryIso,stateIso).subscribe(data => {
-      this.listCity = data;
-    });
-  }
-
-
-
   getControl(controlName: string) : FormControl {
     return this.registrationForm.get(controlName) as FormControl;
   }
@@ -86,6 +61,20 @@ export class SignupComponent {
 
   registration(){
     if(this.registrationForm.valid){
+      console.log(this.registrationForm.value)
+      
+      this.apiService.post('register',this.registrationForm.value).subscribe({
+        error: ((err: any) => {
+          console.log('errorlog');
+          console.log(err.message);
+        }),
+        complete: (() => {
+          console.log('completelog');
+        }),
+        next:((value: object) => {
+          console.log('nextlog');
+        })
+      })
      //console.log('Form Values are as follows'+this.registrationForm.value);
       //this.registrationForm.markAsPristine();
       //this.registrationForm.markAsUntouched();
@@ -102,6 +91,32 @@ export class SignupComponent {
   }
 
   
+
+    
+
+  //Fetch Country List 
+  fetchCountry(){
+    this.CountrystatecityService.getCountry().subscribe(data => {
+      this.listCountry = data;
+
+    });
+  }
+
+  //Fetch State List 
+  onCountrySelected(countryIso:string){
+    this.CountrystatecityService.getStateOfSelectedCountry(countryIso).subscribe(data => {
+      this.listState = data;
+    });
+  }
+
+
+  //Fetch City List 
+  // onStateSelected(countryIso = this.countrySelected ,stateIso = stateSelected){
+  onStateSelected(countryIso = this.selectcountry,stateIso = this.selectstate){
+    this.CountrystatecityService.getCityOfSelectedState(countryIso,stateIso).subscribe(data => {
+      this.listCity = data;
+    });
+  }
 
   
 

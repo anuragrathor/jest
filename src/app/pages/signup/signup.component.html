@@ -25,10 +25,10 @@
 
       Address : 
       <div formGroupName="address">
-        <div class="col-12">
+        <div class="row">
         
-      </div>
-      <div class="col-12">
+        
+        <div class="col-4">
           Country :
 
       
@@ -39,20 +39,21 @@
           <!-- <input type="text" name="country" formControlName="country"> -->
          
         </div>
-        <div class="col-12">
+        <div class="col-4">
           State : 
           <select formControlName="state" name="state" [(ngModel)]="selectstate" (ngModelChange)="onStateSelected()">
             <option *ngFor="let statetitle of listState" [value]="statetitle.iso2">{{statetitle.name}}</option>
           </select>
          
           </div>
-          <div class="col-12">
+          <div class="col-4">
           City : 
           <select formControlName="city" name="city">
-            <option *ngFor="let citytitle of listCity" [value]="citytitle.iso2">{{citytitle.name}}</option>
+            <option *ngFor="let citytitle of listCity" [value]="citytitle.id">{{citytitle.name}}</option>
           </select>
           
           </div>
+        </div>
       </div>
   
         
