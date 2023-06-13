@@ -71,7 +71,7 @@ export class SignupComponent {
 
   //Fetch City List 
   // onStateSelected(countryIso = this.countrySelected ,stateIso = stateSelected){
-  onStateSelected(countryIso:string,stateIso:string){
+  onStateSelected(countryIso = this.selectcountry,stateIso = this.selectstate){
     this.CountrystatecityService.getCityOfSelectedState(countryIso,stateIso).subscribe(data => {
       this.listCity = data;
     });
@@ -86,10 +86,10 @@ export class SignupComponent {
 
   registration(){
     if(this.registrationForm.valid){
-     // console.log('Form Values are as follows'+this.registrationForm.value.mobile);
-      this.registrationForm.markAsPristine();
-      this.registrationForm.markAsUntouched();
-      this.registrationForm.reset();   
+     //console.log('Form Values are as follows'+this.registrationForm.value);
+      //this.registrationForm.markAsPristine();
+      //this.registrationForm.markAsUntouched();
+      //this.registrationForm.reset();   
     }else{
       alert('something error');
     }

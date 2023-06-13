@@ -1,2 +1,5 @@
-export class City {
+export interface City {
+    id:number,
+    name: string,
+    iso2: string
 }

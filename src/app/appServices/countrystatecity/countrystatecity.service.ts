@@ -15,7 +15,7 @@ export class CountrystatecityService {
   httpOptions = {
     headers: new HttpHeaders({
       "Content-type" :  "application/json",
-      "X-CSCAPI-KEY" :  "API_KEY"  //Put API Key Later 
+      "X-CSCAPI-KEY" :  "UDNkaEUyejMxMXBYUk9lRE54S3MycjVZdktxczFNOEc2dXhjS2lWTw=="  //Put API Key Later 
     }) 
   }
 
@@ -29,7 +29,7 @@ export class CountrystatecityService {
   }
 
   getCityOfSelectedState(countryIso:string,stateIso:string): Observable<Country[]>{
-    return this.http.get<Country[]>(`https://api.countrystatecity.in/v1/countries/${countryIso}/states/${stateIso}/states`, { headers: this.httpOptions.headers});
+    return this.http.get<Country[]>(`https://api.countrystatecity.in/v1/countries/${countryIso}/states/${stateIso}/cities`, { headers: this.httpOptions.headers});
   }
 
 
