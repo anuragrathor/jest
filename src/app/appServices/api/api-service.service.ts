@@ -21,7 +21,9 @@ export class ApiServiceService {
   }
 
   post(url:any, data:any) {
-    return this.http.post(environment.url+url, data);
+   // return this.http.post(environment.url+url, data);
+    return this.http.post('https://dummy.restapiexample.com/api/v1/create', data);
+    
   }
 
   postFormData(url:any, data:any) {

@@ -68,11 +68,12 @@ export class SignupComponent {
           console.log('errorlog');
           console.log(err.message);
         }),
-        complete: (() => {
-          console.log('completelog');
-        }),
         next:((value: object) => {
           console.log('nextlog');
+          console.log(value);
+        }),
+        complete: (() => {
+          console.log('completelog');
         })
       })
      //console.log('Form Values are as follows'+this.registrationForm.value);
